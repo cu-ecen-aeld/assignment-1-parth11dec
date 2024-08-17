@@ -11,10 +11,14 @@ fi
 writefile="$1"
 writestr="$2"
 
-mkdir -p "$WRITEDIR"
+# Extract the directory path
+dir=`dirname $writefile`
+
+# Make nested directories
+mkdir -p $dir
 
 # Create the file and write the content
-if ! echo "$WRITEDIR/$writestr" > "$writefile"; then
+if ! echo "$writestr" > "$writefile"; then
   echo "Error: Could not create file '$writefile'"
   exit 1
 fi
